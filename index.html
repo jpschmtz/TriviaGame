@@ -7,7 +7,7 @@
   <head>
 
     <meta charset="UTF-8">
-    <title>Stopwatch</title>
+    <title>Trivia Timed!</title>
 
     <!-- Our CSS style sheet -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -17,13 +17,18 @@
   <body>
 
     <div id="wrapper">
+
+        <div id="display">Seconds Remaining</div>
         <div id="question"></div>
-        <div id="answers"></div> 
-
-    </div>
-
-
-    <div id="displayText"></div>
+        <!-- Div containing our choices in triva -->
+        <div class="buttons">
+          <button id="ans1">one</button>
+          <button id="ans2">two</button>
+          <button id="ans3">three</button>
+          <button id="ans4">four</button>
+        </div>
+  
+      </div>
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
