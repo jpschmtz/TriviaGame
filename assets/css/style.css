@@ -1,0 +1,9 @@
+body {
+    background-color: black;
+    color : white;
+    background-image: url(.//images/kirk.jpg)
+}
+
+#pic{
+    max-width: 300px;
+}

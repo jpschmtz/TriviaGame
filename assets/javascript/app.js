@@ -71,7 +71,7 @@ var random=Math.floor(Math.random() * 2);
 var correctAnswer;
 var time;
 var windowTimeout;
-var winCount;
+var winCount = 0;
 
 function first() {
     // clearTimeout(windowTimeout);
@@ -89,12 +89,29 @@ function first() {
     $("#ans4").html("" + qBank.q1.qAns.wrongAns3.text + "");
     $("#ans4").val("" + qBank.q1.qAns.wrongAns3.value + "");
 
-    console.log("Cleared")
+    console.log("Q1")
     setInterval(count, 1000);
     windowTimeout = setTimeout(function() {
         alert("Times Up!");
+        clearTimeout(windowTimeout)
+        second()
         }, time);
-  }
+    $(".buttons button").click(function(){
+        console.log(this.id);
+        console.log($(this).attr('value'));
+        var answer1 = $(this).attr('value')
+        if(answer1 == "true"){
+            alert("Correct!")
+            winCount++;
+            clearTimeout(windowTimeout)
+            second()
+        } else {
+            clearTimeout(windowTimeout)
+            alert("Incorrect!")
+            second()
+        }
+    })
+  };
 
   function second(){
     time = 10000;
@@ -111,12 +128,31 @@ function first() {
     $("#ans4").html("" + qBank.q2.qAns.wrongAns3.text + "");
     $("#ans4").val("" + qBank.q2.qAns.wrongAns3.value + "");
 
-    console.log("Cleared")
+    $("#distraction").html('<img id="pic" src="assets/images/kirk.jpg" /> James Tiberius Kirk');
+
+    console.log("Q2")
     setInterval(count, 1000);
     windowTimeout = setTimeout(function() {
         alert("Times Up!");
+        clearTimeout(windowTimeout)
+        third()
         }, time);
-  }
+    $(".buttons button").click(function(){
+        console.log(this.id);
+        console.log($(this).attr('value'));
+        var answer2 = $(this).attr('value')
+        if(answer2 == "true"){
+            alert("Correct!")
+            winCount++;
+            clearTimeout(windowTimeout)
+            third()
+        } else {
+            clearTimeout(windowTimeout)
+            alert("Incorrect!")
+            third()
+        }
+    })
+  };
 
   function third(){
     time = 10000;
@@ -133,13 +169,51 @@ function first() {
     $("#ans4").html("" + qBank.q3.qAns.wrongAns3.text + "");
     $("#ans4").val("" + qBank.q3.qAns.wrongAns3.value + "");
 
-    console.log("Cleared")
+    $("#distraction").html('<img id="pic" src="assets/images/iowa.jpg" /> Kirk is a Hawkeye!');
+
+    console.log("Q3")
     setInterval(count, 1000);
     windowTimeout = setTimeout(function() {
         alert("Times Up!");
+        clearTimeout(windowTimeout)
+        results()
         }, time);
-  }
+    $(".buttons button").click(function(){
+        console.log(this.id);
+        console.log($(this).attr('value'));
+        var answer3 = $(this).attr('value')
+        if(answer3 == "true"){
+            alert("Correct!")
+            winCount++;
+            clearTimeout(windowTimeout)
+            results()
+        } else {
+            clearTimeout(windowTimeout)
+            alert("Incorrect!")
+            results()
+        }
+    })
+  };
 
+  function results(){
+      alert("You have gotten " + winCount + " questions correct!")
+      $("#question").text("Thanks for playing! You have gotten " + winCount + " questions correct!");
+      $("#ans1").html("Restart Game");
+  
+      $("#ans2").html("Restart Game");
+  
+      $("#ans3").html("Restart Game");
+  
+      $("#ans4").html("Restart Game");
+      $("#distraction").html('<img id="pic" src="assets/images/ship.jpg" /> Enterprise, we will pick you up!');
+
+      $(".buttons button").click(function(){
+        winCount = 0
+        first()
+      })
+
+  
+  }
 
 function count() {
 
@@ -160,50 +234,55 @@ function count() {
   }
 
   function play(){
-      first()
-      $(".buttons button").click(function(){
-        clearTimeout(windowTimeout)
-        console.log(this.id);
-        console.log($(this).attr('value'));
-        answer = $(this).attr('value')
-        if(answer == "true"){
-            alert("Correct!")
-            winCount++;
-        } else {
-            alert("Incorrect!")
-        }
-        second()
-        $(".buttons button").click(function(){
-            clearTimeout(windowTimeout)
-            console.log(this.id);
-            console.log($(this).attr('value'));
-            answer = $(this).attr('value')
-            if(answer == "true"){
-                alert("Correct!")
-                winCount++;
-            } else {
-                alert("Incorrect!")
-            }
-            third()
-            $(".buttons button").click(function(){
-                clearTimeout(windowTimeout)
-                console.log(this.id);
-                console.log($(this).attr('value'));
-                answer = $(this).attr('value')
-                if(answer == "true"){
-                    alert("Correct!")
-                    winCount++;
-                } else {
-                    alert("Incorrect!")
-                }   
+    //   first()
+    //   $(".buttons button").click(function(){
 
-                })
-            })
-        })
+    //     console.log(this.id);
+    //     console.log($(this).attr('value'));
+    //     answer = $(this).attr('value')
+    //     if(answer == "true"){
+    //         alert("Correct!")
+    //         winCount++;
+    //         clearTimeout(windowTimeout)
+    //         second()
+    //     } else {
+    //         clearTimeout(windowTimeout)
+    //         alert("Incorrect!")
+    //         second()
+    //     }
+        // second()
+        // $(".buttons button").click(function(){
+        //     clearTimeout(windowTimeout)
+        //     console.log(this.id);
+        //     console.log($(this).attr('value'));
+        //     answer = $(this).attr('value')
+        //     if(answer == "true"){
+        //         alert("Correct!")
+        //         winCount++;
+        //     } else {
+        //         alert("Incorrect!")
+        //     }
+        //     third()
+        //     $(".buttons button").click(function(){
+        //         clearTimeout(windowTimeout)
+        //         console.log(this.id);
+        //         console.log($(this).attr('value'));
+        //         answer = $(this).attr('value')
+        //         if(answer == "true"){
+        //             alert("Correct!")
+        //             winCount++;
+        //         } else {
+        //             alert("Incorrect!")
+        //         }   
+        //         results()
+
+        //         })
+        //     })
+        // })
     };
 
 window.onload = function() {
-    play()
+    first()
 
     };
 
